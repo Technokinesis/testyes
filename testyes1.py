@@ -36,10 +36,7 @@ class Role(commands.Cog):
             try:
                 member = ctx.guild.get_member(int(ctx.channel.topic[9:]))
             except (ValueError, TypeError):
-                raise commands.MissingRequiredArgument(SimpleNamespace(name="unrole"))
-            
-        if role.position > ctx.author.roles[-1].position:
-            return await ctx.send("You do not have permissions to remove this role.")
+                raise commands.MissingRequiredArgument(SimpleNamespace(name="unrole")
         
         await member.remove_roles(role)
         await ctx.send(f"Successfully removed the role from {member.name}!")
